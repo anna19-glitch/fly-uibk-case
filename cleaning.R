@@ -145,7 +145,7 @@ route_errors |>
 #this is an empty tibble - there are no route code errors
 
 ## To do Cleaning
-#are the route indicators all correct
+
 ##Analytical Questions
 # does correcting the delay indicator affect LDA or FlyUIBK flights more?
 #calculate the average flight duration by route and airline
