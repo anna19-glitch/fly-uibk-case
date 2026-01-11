@@ -73,14 +73,14 @@ kruskal.test(delay_calc ~ routecode, data = flights)
 wilcox.test(delay_calc ~ airline, data = flights)
 # the p-value is >0.05 meaning we cannot reject the null hypothesis
 
-#i don't really know how to interpretthis so i should probably leave it out
+
 prop.test(
   table(flights$delay_indicator_calc, flights$airline)
 )
 
 #H4:FlyUIBK operates proportionally more flights on congested routes (e.g., BER).
-#i don't know how to interpret this but i do think this is one of the important ones
 chisq.test(table(flights$airline, flights$destination))
+#cannot reject the null
 
 #H5:Delays differ by weekday.
 kruskal.test(delay_calc ~ weekday, data = flights)
@@ -91,6 +91,7 @@ table(flights$weekday, flights$airline)
 #create time buckets for departure
 flights <- flights |>
   mutate(dep_hour = hour(sched_dep_dt))
+
 #H6:Later departures have higher delays.
 cor.test(flights$dep_hour, flights$delay_calc, method = "spearman")
 #the p value is high meaning we cannot reject the null
@@ -103,3 +104,4 @@ cor.test(
   use = "complete.obs"
 )
 # p-value greater than 0.05 so we cannot reject the null
+
